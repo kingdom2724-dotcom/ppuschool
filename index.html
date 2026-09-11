@@ -9,7 +9,7 @@
 <meta property="og:title" content="뿌스쿨 강사 파트너">
 <meta property="og:description" content="당신의 경험, 수익이 되는 강의로 만들어드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta name="theme-color" content="#0A1630">
+<meta name="theme-color" content="#0A142A">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
@@ -42,20 +42,21 @@
 /* ---------- 0. tokens ---------- */
 :root{
   /* 명함 시안 기준: Deep Navy + 골드 + 스틸 블루 */
-  /* 바탕 3단계 — 명함 네이비(#0C1B36) 기준 */
-  --ink:#0A1630;          /* base */
-  --ink-2:#0E1D3A;        /* 밴드 */
-  --ink-3:#132549;        /* 서피스(타일·셀) */
-  --line:#223459;
-  --line-soft:#1A2A4C;
+  /* 기본 = 다크(명함 네이비) */
+  --ink:#0A142A;          /* base — Deep Navy 한 톤 다운 */
+  --ink-2:#0E1B36;        /* 밴드 */
+  --ink-3:#132443;        /* 서피스(타일·셀) */
+  --line:#223558;
+  --line-soft:#1A2A49;
 
-  /* 액센트 3색 — 역할 고정 */
-  --cobalt:#3B6DE0;       /* 버튼·인터랙션 전용 */
+  /* 액센트 — 코발트 주요 포인트, 골드 최소 */
+  --cobalt:#3B6DE0;       /* 버튼·인터랙션 */
   --cobalt-hover:#2F5CC9;
   --cobalt-dim:rgba(59,109,224,.16);
-  --cobalt-soft:#8FB0DE;  /* 라벨·번호·숫자 — 로고 '스쿨' 스틸 블루 */
-  --gold:#CFA24A;         /* 브랜드 강조 한 곳씩 — 로고 '뿌' */
-  --gold-soft:#E4C77A;
+  --cobalt-soft:#8AA6F5;  /* 라벨·번호 (다크 위) */
+  --gold:#D4A94A;         /* 브랜드 골드 (명함 스와치) */
+  --gold-soft:#E6C878;
+  --gold-deep:#B8892E;    /* 라이트 배경용 */
 
   /* 텍스트 3단계 */
   --paper:#F4F6FA;
@@ -121,21 +122,23 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 .section--band{background:var(--ink-2);border-block:1px solid var(--line-soft)}
 .section--tight{padding-block:clamp(56px,7vw,96px)}
 
+/* 라이트 그레이 블록 — 다크 흐름 중간에 끼워 넣는 쉼 구간. 선·셀·버튼·라벨 색이 전부 따라감 */
+.is-light{
+  --ink:#F7F6F2;--ink-2:#EFEFEB;--ink-3:#FFFFFF;
+  --line:#D6D5CE;--line-soft:#E4E3DD;
+  --cobalt:#2F5CD6;--cobalt-hover:#2549B4;--cobalt-dim:rgba(47,92,214,.10);
+  --cobalt-soft:#2F5CD6;--gold:#B8892E;--gold-soft:#B8892E;
+  --paper:#0C1B36;--muted:#4D586B;--muted-2:#7E8798;
+  background:var(--ink);color:var(--paper);
+}
+
 .rule{height:1px;background:var(--line-soft);border:0;margin:0}
 
-/* 좌측 마진 레일 (데스크탑 전용) */
-.rail{
-  position:absolute;top:var(--sec-y);left:max(calc((100% - var(--wrap))/2 - 116px),16px);
-  font-size:.7rem;font-weight:600;letter-spacing:.16em;
-  color:var(--muted-2);text-transform:uppercase;line-height:1.4;
-  writing-mode:horizontal-tb;
-}
-.rail b{display:block;color:var(--cobalt-soft);font-weight:700}
 
 /* ---------- 3. header ---------- */
 .hdr{
   position:sticky;top:0;z-index:40;
-  background:rgba(10,22,48,.84);
+  background:rgba(10,20,42,.86);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line-soft);
 }
@@ -146,8 +149,8 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
 /* 워드마크 — 명함 로고의 골드 + 스틸 블루 2톤 (플랫) */
 .wm{font-weight:700;letter-spacing:-.045em}
-.wm__a{color:var(--gold-soft)}
-.wm__b{color:var(--cobalt-soft)}
+.wm__a{color:var(--gold)}
+.wm__b{color:var(--paper)}
 .nav{display:flex;gap:26px;margin-left:auto;font-size:.925rem;color:var(--muted)}
 .nav a{text-decoration:none;transition:color .18s ease}
 .nav a:hover{color:var(--paper)}
@@ -163,8 +166,16 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 }
 .btn__ar{font-size:.95em;transition:transform .2s ease}
 .btn:hover .btn__ar{transform:translateX(3px)}
-.btn--primary{background:var(--cobalt);color:#fff}
-.btn--primary:hover{background:var(--cobalt-hover);transform:translateY(-1px)}
+.btn--primary{
+  background:linear-gradient(135deg,#E3C169 0%,#CDA246 48%,#B0832C 100%);
+  color:#0C1B36;border-color:rgba(255,255,255,.12);
+  box-shadow:0 6px 18px rgba(212,169,74,.16),inset 0 1px 0 rgba(255,255,255,.28);
+}
+.btn--primary:hover{
+  background:linear-gradient(135deg,#F1D683 0%,#DEB456 48%,#C4953A 100%);
+  transform:translateY(-1px);box-shadow:0 10px 24px rgba(212,169,74,.3),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.is-light .btn--primary{box-shadow:0 6px 18px rgba(184,137,46,.2),inset 0 1px 0 rgba(255,255,255,.45)}
 .btn--ghost{border-color:var(--line);color:var(--paper);background:transparent}
 .btn--ghost:hover{border-color:var(--cobalt-soft);background:var(--cobalt-dim);transform:translateY(-1px)}
 .btn--sm{padding:9px 16px;font-size:.875rem;border-radius:5px}
@@ -173,16 +184,45 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 /* ---------- 4. hero ---------- */
 .hero{
   position:relative;overflow:hidden;
-  padding-block:clamp(76px,10vw,140px) clamp(72px,9vw,124px);
-  border-bottom:1px solid var(--line-soft);
+  padding-block:clamp(76px,10vw,140px) clamp(72px,9vw,120px);
 }
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(900px 440px at 8% -10%,rgba(59,109,224,.24),transparent 62%),
-    radial-gradient(620px 320px at 92% 110%,rgba(143,176,222,.08),transparent 60%);
+    radial-gradient(760px 400px at 4% -10%,rgba(59,109,224,.16),transparent 62%);
 }
-.hero__in{position:relative;max-width:900px}
+.hero__in{position:relative;z-index:2;max-width:640px}
+
+/* ---------- 4b. hero visual — 유리질 리본 + 볼류메트릭 글로우 ---------- */
+.hero__vis{
+  position:absolute;top:-6%;right:-4%;bottom:-8%;width:62%;z-index:1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(80% 78% at 64% 56%,#000 32%,transparent 82%);
+  mask-image:radial-gradient(80% 78% at 64% 56%,#000 32%,transparent 82%);
+}
+.hero__vis svg{width:100%;height:100%;display:block;overflow:visible}
+.hero__grain{
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+}
+.rings circle{transform-origin:700px 720px;animation:ringBreath 14s ease-in-out infinite alternate}
+.rings circle:nth-child(2){animation-delay:-2s}.rings circle:nth-child(3){animation-delay:-4s}
+.rings circle:nth-child(4){animation-delay:-6s}.rings circle:nth-child(5){animation-delay:-8s}
+.grow{stroke-dasharray:600;stroke-dashoffset:600;animation:growIn 2.4s cubic-bezier(.22,.61,.36,1) .3s forwards}
+.nodes circle{animation:nodeIn .8s ease-out both}
+.nodes circle:nth-child(1),.nodes circle:nth-child(2){animation-delay:.6s}
+.nodes circle:nth-child(3),.nodes circle:nth-child(4){animation-delay:1.2s}
+.nodes circle:nth-child(5),.nodes circle:nth-child(6){animation-delay:1.8s}
+.nodes circle:nth-child(7),.nodes circle:nth-child(8){animation-delay:2.4s}
+@keyframes ringBreath{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes growIn{to{stroke-dashoffset:0}}
+@keyframes nodeIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.nodes circle{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:reduce){.rings circle,.nodes circle{animation:none}.grow{animation:none;stroke-dashoffset:0}}
+@media (max-width:940px){
+  .hero__vis{top:auto;bottom:-12%;right:-22%;width:92%;height:70%;opacity:.7;
+    -webkit-mask-image:radial-gradient(70% 70% at 60% 55%,#000 20%,transparent 78%);
+    mask-image:radial-gradient(70% 70% at 60% 55%,#000 20%,transparent 78%)}
+}
 .eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   font-size:.74rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;
@@ -190,8 +230,8 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 }
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--cobalt-soft)}
 .hero h1{font-size:var(--fs-h1);margin-bottom:28px}
-.hero h1 .hl{color:var(--gold-soft)}
-.hero__lead{font-size:var(--fs-lead);color:#C3CEE2;max-width:42em;line-height:1.82}
+.hero h1 .hl{color:var(--cobalt-soft)}
+.hero__lead{font-size:var(--fs-lead);color:var(--muted);max-width:42em;line-height:1.82}
 .hero__lead b{color:var(--paper);font-weight:600}
 .hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 .hero__meta{
@@ -200,6 +240,42 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 }
 .hero__meta .eq{color:var(--paper)}
 .hero__meta .dot{color:var(--line)}
+
+/* 데스크탑 전용 줄바꿈 — 모바일에서는 자연 줄바꿈으로 복귀 */
+.br-fixed{max-width:none}
+.shead h2{max-width:22ch}
+@media (max-width:760px){ .br-d{display:none} .br-fixed{max-width:40em} }
+
+/* ---------- 4c. proof strip — 히어로 아래 시장 데이터 띠 ---------- */
+.proof{border-bottom:1px solid var(--line-soft)}
+.proof .wrap{padding-top:clamp(56px,7vw,96px)}
+.proof__title{
+  font-size:clamp(1.6rem,1.1rem + 2.1vw,2.5rem);font-weight:700;letter-spacing:-.035em;line-height:1.28;
+  color:var(--paper);margin-bottom:clamp(28px,3.4vw,44px);max-width:24ch;text-wrap:balance;
+}
+.proof__grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.proof__item{
+  display:flex;flex-direction:column;gap:12px;
+  padding:clamp(22px,2.8vw,34px) clamp(20px,3vw,40px) clamp(22px,2.6vw,32px);
+  border-left:1px solid var(--line-soft);
+}
+.proof__item:first-child{border-left:0;padding-left:0}
+.proof__ico{width:26px;height:26px;color:var(--cobalt-soft)}
+.proof__label{font-size:.86rem;font-weight:500;color:var(--muted);letter-spacing:.01em}
+.proof__num{
+  font-size:clamp(1.9rem,1.2rem + 2.4vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1;
+  color:var(--cobalt);font-variant-numeric:tabular-nums;
+}
+.proof__note{padding:14px 0 clamp(40px,5vw,72px);font-size:.7rem;color:var(--muted-2);letter-spacing:.01em;border-top:1px solid var(--line-soft)}
+@media (max-width:760px){
+  .proof__grid{grid-template-columns:1fr}
+  .proof__title{margin-bottom:22px;max-width:none}
+  .proof__item{border-left:0;border-top:1px solid var(--line-soft);padding-left:0;padding-right:0;flex-direction:row;align-items:center;gap:16px;padding-block:18px}
+  .proof__item:first-child{border-top:0}
+  .proof__label{flex:1}
+  .proof__num{font-size:1.7rem}
+  .proof__note{padding-top:6px}
+}
 
 /* ---------- 5. section head ---------- */
 .shead{max-width:50ch;margin-bottom:clamp(38px,4.5vw,58px)}
@@ -217,11 +293,11 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 /* pull quote */
 .pull{
   margin-top:40px;padding:26px 0 26px 26px;
-  border-left:2px solid var(--gold);
+  border-left:2px solid var(--cobalt);
   font-size:clamp(1.15rem,.95rem + .8vw,1.5rem);
   font-weight:600;letter-spacing:-.025em;line-height:1.55;color:var(--paper);
 }
-.pull span{display:block;color:var(--gold-soft)}
+.pull span{display:block;color:var(--muted-2)}
 
 /* ---------- 6. process ---------- */
 .process{margin-top:clamp(40px,5vw,64px)}
@@ -232,7 +308,16 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 .process__track::before{
   content:"";position:absolute;top:7px;left:6%;right:6%;height:1px;
   background:linear-gradient(90deg,var(--line),var(--cobalt-soft));
+  transform:scaleX(0);transform-origin:left center;transition:transform 1.4s cubic-bezier(.22,.61,.36,1) .1s;
 }
+.process.is-in .process__track::before{transform:scaleX(1)}
+.step__dot{opacity:0;transform:scale(.6);transition:opacity .4s ease,transform .5s cubic-bezier(.22,.61,.36,1)}
+.process.is-in .step__dot{opacity:1;transform:scale(1)}
+.process.is-in .step:nth-child(1) .step__dot{transition-delay:.15s}
+.process.is-in .step:nth-child(2) .step__dot{transition-delay:.4s}
+.process.is-in .step:nth-child(3) .step__dot{transition-delay:.65s}
+.process.is-in .step:nth-child(4) .step__dot{transition-delay:.9s}
+.process.is-in .step:nth-child(5) .step__dot{transition-delay:1.15s}
 .step{position:relative;text-align:center;padding-top:0}
 .step__dot{
   width:15px;height:15px;border-radius:50%;margin:0 auto 18px;
@@ -240,8 +325,8 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
   display:grid;place-items:center;
 }
 .step__dot::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--muted-2)}
-.step:last-child .step__dot{border-color:var(--gold)}
-.step:last-child .step__dot::after{background:var(--gold-soft)}
+.step:last-child .step__dot{border-color:var(--cobalt)}
+.step:last-child .step__dot::after{background:var(--cobalt)}
 .step__idx{display:block;font-size:.68rem;font-weight:500;color:var(--muted-2);letter-spacing:.1em;margin-bottom:6px}
 .step__name{font-size:.84rem;font-weight:700;letter-spacing:.09em;color:var(--paper)}
 
@@ -277,45 +362,79 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 .after-note{
   margin-top:30px;font-size:1.08rem;font-weight:600;letter-spacing:-.02em;color:var(--paper);
 }
-.after-note em{font-style:normal;color:var(--gold-soft)}
+.after-note em{font-style:normal;color:var(--cobalt)}
 
-/* ---------- 9. fields ---------- */
-.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px}
-.field{
-  padding:22px 20px 24px;border:1px solid var(--line);border-radius:8px;
-  background:var(--ink-3);
-  transition:border-color .2s ease,transform .2s ease;
-}
-.field:hover{border-color:var(--cobalt-soft);transform:translateY(-2px)}
-.field__no{display:block;font-size:.7rem;font-weight:600;color:var(--cobalt-soft);letter-spacing:.12em;margin-bottom:14px}
-.field__name{font-size:1.05rem;font-weight:600;letter-spacing:-.02em;line-height:1.45}
-
-/* ---------- 10. stats ---------- */
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);
+/* ---------- 9. fields — 에디토리얼 그리드 ---------- */
+.fgrid{
+  display:grid;grid-template-columns:repeat(2,1fr);
   border-top:1px solid var(--line);border-left:1px solid var(--line);
-  margin-bottom:clamp(38px,4.5vw,56px);
+  margin-bottom:36px;
 }
-.stat{
-  padding:clamp(24px,3vw,34px) clamp(20px,2.4vw,28px);
+.fcell{
+  position:relative;padding:clamp(26px,3.2vw,40px) clamp(20px,2.8vw,36px) clamp(28px,3.4vw,44px);
   border-right:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--ink);
+  display:flex;flex-direction:column;gap:clamp(30px,4.6vw,64px);
+  transition:background-color .25s ease;
 }
-.stat__tag{display:block;font-size:.66rem;font-weight:600;letter-spacing:.16em;color:var(--cobalt-soft);margin-bottom:14px}
-.stat__fig{
-  display:block;font-weight:700;
-  font-size:clamp(1.8rem,1.15rem + 2.2vw,2.6rem);
-  letter-spacing:-.03em;line-height:1.1;color:var(--paper);margin-bottom:14px;
-  font-variant-numeric:tabular-nums;
-}
-.stat__fig--ko{font-size:clamp(1.55rem,1.05rem + 1.7vw,2.1rem)}
-.stat--hi .stat__fig{color:var(--gold-soft)}
-.stat__desc{font-size:.97rem;color:var(--muted);line-height:1.62}
+.fcell:hover{background:var(--ink-3)}
+.fcell__top{display:flex;align-items:center;justify-content:space-between}
+.fcell__no{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:var(--cobalt-soft)}
+.fcell__glyph{width:40px;height:40px;color:var(--cobalt-soft);transition:transform .3s ease}
+.fcell:hover .fcell__glyph{transform:translateY(-3px)}
+.fcell__name{font-size:clamp(1.5rem,1rem + 1.8vw,2.3rem);font-weight:700;letter-spacing:-.04em;line-height:1.15;color:var(--paper)}
 
-/* ---------- 11. statement ---------- */
+/* ---------- 10. stats — 에디토리얼 ---------- */
+.stats{border-top:1px solid var(--line);margin-bottom:clamp(38px,4.5vw,56px)}
+.stat{
+  display:grid;grid-template-columns:120px minmax(320px,.48fr) 1fr;
+  gap:clamp(12px,2.4vw,40px);align-items:baseline;
+  padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line-soft);
+}
+.stat__tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;color:var(--cobalt-soft)}
+.stat__fig{
+  font-weight:800;font-size:clamp(2.4rem,1.4rem + 4vw,4.4rem);white-space:nowrap;
+  letter-spacing:-.055em;line-height:.95;color:var(--paper);font-variant-numeric:tabular-nums;
+}
+.stat__fig--ko{font-size:clamp(2rem,1.2rem + 3vw,3.4rem)}
+.stat__fig,.stat--hi .stat__fig{color:var(--cobalt)}
+.stat__desc{font-size:1.08rem;color:var(--muted);line-height:1.7;max-width:34em}
+
+/* ---------- 11. statement / partner ---------- */
 .statement h2{max-width:22ch}
 .statement__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:start}
 .statement__grid .body-copy{max-width:none}
+
+.partner__grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,80px);align-items:center}
+.partner__vis{position:relative;aspect-ratio:540/560;max-width:520px}
+.partner__vis svg{width:100%;height:100%;display:block;overflow:visible}
+.pv-rings .ring{transform-box:fill-box;transform-origin:center;transform:scale(.2);opacity:0;
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1),opacity .8s ease}
+.partner__vis.is-in .pv-rings .ring{transform:scale(1);opacity:var(--o,.6)}
+.pv-rings .ring{--o:.55}
+.pv-rings .ring:nth-child(3),.pv-rings .ring:nth-child(6){--o:.85}
+.partner__vis .pv-rings .ring{transition-delay:var(--d,0s)}
+.pv-axis{stroke-dasharray:2 5;opacity:0;transition:opacity .8s ease 1.9s}
+.partner__vis.is-in .pv-axis{opacity:.45}
+.pv-dots circle{opacity:0;transition:opacity 1.2s ease 1.6s}
+.partner__vis.is-in .pv-dots circle{opacity:.3}
+@media (prefers-reduced-motion:reduce){.pv-rings .ring{transform:none;opacity:.6}.pv-axis{opacity:.45}.pv-dots circle{opacity:.3}}
+
+/* ---------- 11b. vision — 배경 타이포 ---------- */
+.vision{overflow:hidden;padding-block:clamp(110px,14vw,200px)}
+.vision__bg{position:absolute;inset:0;display:flex;align-items:center;pointer-events:none;overflow:hidden}
+.vision__row{
+  display:flex;gap:.55em;white-space:nowrap;
+  font-size:clamp(5rem,3.4rem + 11vw,14rem);font-weight:800;letter-spacing:-.05em;line-height:1;
+  color:transparent;-webkit-text-stroke:1.2px rgba(138,166,245,.32);
+  animation:visionDrift 60s linear infinite;
+}
+.vision__row span:nth-child(odd){color:rgba(138,166,245,.06);-webkit-text-stroke:0}
+@keyframes visionDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@supports not (-webkit-text-stroke:1px #000){.vision__row{color:rgba(138,166,245,.08)}}
+@media (prefers-reduced-motion:reduce){.vision__row{animation:none}}
+.vision__in{position:relative;z-index:1}
+.vision h2{font-size:clamp(2.1rem,1.3rem + 3.4vw,3.6rem);letter-spacing:-.045em;max-width:18ch}
+.vision__body{margin-top:clamp(26px,3.5vw,42px);max-width:none}
 
 /* ---------- 12. faq ---------- */
 .faq{border-top:1px solid var(--line-soft)}
@@ -364,7 +483,7 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
   margin-top:26px;font-size:.95rem;color:var(--muted);
 }
 .cta__mail a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line)}
-.cta__mail a:hover{border-bottom-color:var(--gold);color:var(--gold-soft)}
+.cta__mail a:hover{border-bottom-color:var(--cobalt-soft);color:var(--cobalt-soft)}
 
 .foot{
   border-top:1px solid var(--line-soft);background:var(--ink);
@@ -379,23 +498,45 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 .foot__sp{margin-left:auto}
 
 /* ---------- 14. reveal ---------- */
-.js .reveal{opacity:0;transform:translateY(12px)}
-.js .reveal.is-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.js .reveal{opacity:0;transform:translateY(14px)}
+.js .reveal.is-in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+/* 자식 요소 순차 등장 */
+.js .reveal .checks li,.js .reveal .fcell,.js .reveal .stat,.js .reveal .faq__item,.js .reveal .proof__item{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.is-in .checks li,.js .reveal.is-in .fcell,.js .reveal.is-in .stat,.js .reveal.is-in .faq__item,.js .reveal.is-in .proof__item{opacity:1;transform:none}
+.js .reveal.is-in > :nth-child(1),.js .reveal.is-in .checks li:nth-child(1),.js .reveal.is-in .fcell:nth-child(1),.js .reveal.is-in .stat:nth-child(1),.js .reveal.is-in .faq__item:nth-child(1),.js .reveal.is-in .proof__item:nth-child(1){transition-delay:.08s}
+.js .reveal.is-in .checks li:nth-child(2),.js .reveal.is-in .fcell:nth-child(2),.js .reveal.is-in .stat:nth-child(2),.js .reveal.is-in .faq__item:nth-child(2),.js .reveal.is-in .proof__item:nth-child(2){transition-delay:.18s}
+.js .reveal.is-in .checks li:nth-child(3),.js .reveal.is-in .fcell:nth-child(3),.js .reveal.is-in .stat:nth-child(3),.js .reveal.is-in .faq__item:nth-child(3),.js .reveal.is-in .proof__item:nth-child(3){transition-delay:.28s}
+.js .reveal.is-in .checks li:nth-child(4),.js .reveal.is-in .fcell:nth-child(4),.js .reveal.is-in .faq__item:nth-child(4){transition-delay:.38s}
+.js .reveal.is-in .faq__item:nth-child(5){transition-delay:.48s}
+/* 섹션 전환 — 진입 시 섹션 전체가 은은하게 밝아짐 */
+.js .section::after{content:"";position:absolute;inset:0;background:var(--ink);opacity:.5;pointer-events:none;z-index:1;transition:opacity 1.1s ease}
+.js .section.is-in::after{opacity:0}
+.section > .wrap{position:relative;z-index:2}
+.js .proof::after{content:"";position:absolute;inset:0;background:var(--ink);opacity:.5;pointer-events:none;z-index:1;transition:opacity 1.1s ease}
+.js .proof.is-in::after{opacity:0}
+.proof{position:relative}.proof > .wrap{position:relative;z-index:2}
+/* 헤더 — 스크롤 시 그림자 */
+.hdr{transition:box-shadow .3s ease,background-color .3s ease}
+.hdr.is-scrolled{box-shadow:0 8px 30px rgba(4,10,24,.35)}
+
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
-  .js .reveal{opacity:1;transform:none}
+  .js .reveal,.js .reveal *{opacity:1!important;transform:none!important}
+  .js .section::after,.js .proof::after{display:none}
+  .process__track::before{transform:none}.step__dot{opacity:1;transform:none}
 }
 
 /* ---------- 15. responsive ---------- */
-@media (max-width:1340px){ .rail{display:none} }
 
 @media (max-width:860px){
   .nav{display:none}
   .statement__grid{grid-template-columns:1fr}
-  .fields{grid-template-columns:repeat(2,1fr)}
-  .stats{grid-template-columns:repeat(2,1fr)}
+  .partner__grid{grid-template-columns:1fr}
+  .partner__vis{max-width:420px;margin-inline:auto}
+  .stat{grid-template-columns:minmax(90px,.22fr) 1fr;grid-template-areas:"tag fig" "tag desc"}
+  .stat__tag{grid-area:tag}.stat__fig{grid-area:fig}.stat__desc{grid-area:desc}
 }
 
 @media (max-width:620px){
@@ -412,8 +553,9 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
   .step__idx{display:inline;margin:0 10px 0 0;font-size:.7rem}
   .list__item{grid-template-columns:1fr;gap:10px}
   .list__idx{padding-top:0}
-  .fields{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .fcell{gap:26px}
+  .stat{grid-template-columns:1fr;grid-template-areas:"tag" "fig" "desc";gap:8px}
   .hero__actions .btn,.cta__actions .btn{flex:1 1 100%}
   .faq__panel-in{padding-right:0}
   .foot__sp{margin-left:0;flex-basis:100%}
@@ -437,7 +579,7 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       <a href="#team">팀</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn--primary btn--sm" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기</a>
+    <a class="btn btn--primary btn--sm" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기</a>
   </div>
 </header>
 
@@ -445,7 +587,52 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
   <!-- ============ hero ============ -->
   <section class="hero" id="top">
-    <div class="wrap hero__in">
+    <div class="hero__vis" aria-hidden="true">
+      <svg viewBox="0 0 900 900" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="gl-node" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+          <filter id="gl-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="60"/></filter>
+          <linearGradient id="ring" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#3B6DE0" stop-opacity=".05"/>
+            <stop offset=".55" stop-color="#6A90F5" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#BFD3FF" stop-opacity=".9"/>
+          </linearGradient>
+          <linearGradient id="path" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#8AA6F5" stop-opacity=".2"/>
+            <stop offset="1" stop-color="#F4F6FA"/>
+          </linearGradient>
+        </defs>
+        <!-- 은은한 바탕 광 (오브 아님) -->
+        <ellipse cx="640" cy="640" rx="360" ry="300" fill="#2A4FB8" opacity=".28" filter="url(#gl-soft)"/>
+
+        <!-- 확장 — 우하단에서 퍼져나가는 동심원 -->
+        <g class="rings" fill="none" stroke="url(#ring)" stroke-linecap="round">
+          <circle cx="700" cy="720" r="120" stroke-width="1.6"/>
+          <circle cx="700" cy="720" r="230" stroke-width="1.4"/>
+          <circle cx="700" cy="720" r="350" stroke-width="1.2"/>
+          <circle cx="700" cy="720" r="480" stroke-width="1"/>
+          <circle cx="700" cy="720" r="620" stroke-width=".8"/>
+        </g>
+
+        <!-- 성장 — 안쪽 원에서 바깥 원으로 이어지는 경로 -->
+        <path class="grow" d="M 655 605 L 545 520 L 430 405 L 300 300" stroke="url(#path)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+
+        <!-- 연결 — 원 위의 노드들 -->
+        <g class="nodes">
+          <circle cx="655" cy="605" r="10" fill="#3B6DE0" opacity=".5" filter="url(#gl-node)"/><circle cx="655" cy="605" r="3.5" fill="#BFD3FF"/>
+          <circle cx="545" cy="520" r="12" fill="#3B6DE0" opacity=".5" filter="url(#gl-node)"/><circle cx="545" cy="520" r="4" fill="#DCE7FF"/>
+          <circle cx="430" cy="405" r="14" fill="#3B6DE0" opacity=".5" filter="url(#gl-node)"/><circle cx="430" cy="405" r="4.5" fill="#EEF3FF"/>
+          <circle cx="300" cy="300" r="18" fill="#5C86F0" opacity=".55" filter="url(#gl-node)"/><circle cx="300" cy="300" r="5.5" fill="#FFFFFF"/>
+          <!-- 보조 노드 -->
+          <circle cx="640" cy="500" r="2.6" fill="#8AA6F5" opacity=".8"/>
+          <circle cx="610" cy="660" r="2.4" fill="#8AA6F5" opacity=".7"/>
+          <circle cx="480" cy="350" r="2.4" fill="#8AA6F5" opacity=".7"/>
+          <path d="M545 520 L640 500 M655 605 L610 660 M430 405 L480 350" stroke="#8AA6F5" stroke-width=".9" opacity=".3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="wrap"><div class="hero__in">
       <span class="eyebrow">강사 파트너 모집</span>
       <h1>당신의 경험,<br><span class="hl">수익이 되는 강의</span>로 만들어드립니다.</h1>
       <div class="hero__lead">
@@ -453,20 +640,44 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
         <p>강사님은 경험과 노하우에 집중해 주세요.<br>강의 기획부터 제작, 판매, 마케팅까지 <b>나머지 과정은 뿌스쿨이 합니다.</b></p>
       </div>
       <div class="hero__actions">
-        <a class="btn btn--primary btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%80%EB%B3%8D%EA%B2%8C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%20%EB%82%98%EB%88%84%EA%B8%B0">가볍게 이야기 나누기</a>
+        <a class="btn btn--primary btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">가볍게 이야기 나누기</a>
       </div>
       <p class="hero__meta">
         <span class="eq">부 + 부 = 뿌</span>
         <span class="dot" aria-hidden="true">/</span>
         <span>부를 배우고, 새로운 부를 만들어가는 곳</span>
       </p>
+    </div></div>
+  </section>
+
+  <!-- ============ proof strip — 시장 데이터 ============ -->
+  <section class="proof is-light" aria-label="온라인 강의 시장 지표">
+    <div class="wrap">
+      <p class="proof__title">경험이 수익이 되는 시장, 이미 열려 있습니다.</p>
+      <div class="proof__grid reveal">
+        <div class="proof__item">
+          <svg class="proof__ico" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="10" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 21c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M15.5 20c.5-2.6 2.2-4 4.5-4s3.4 1.2 3.7 3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="proof__label">연간 수강생 규모</span>
+          <span class="proof__num">1만 명</span>
+        </div>
+        <div class="proof__item">
+          <svg class="proof__ico" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3v20M17.5 8.2c-.6-1.6-2.2-2.5-4.5-2.5-2.6 0-4.3 1.3-4.3 3.2 0 4.6 9 2.2 9 7 0 2-1.9 3.4-4.7 3.4-2.6 0-4.3-1.1-4.8-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="proof__label">상위 강사 월 수익</span>
+          <span class="proof__num">1억</span>
+        </div>
+        <div class="proof__item">
+          <svg class="proof__ico" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M3 20.5L9.5 13l4.5 4 8-9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 7.5H22v5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="proof__label">시장 연 매출 규모</span>
+          <span class="proof__num">300억</span>
+        </div>
+      </div>
+      <p class="proof__note">* 2025년 온라인 강의 업계 공개 자료 기준, 뿌스쿨 자체 실적 아님</p>
     </div>
   </section>
 
   <!-- ============ 02. why ============ -->
   <section class="section" id="why">
-    <p class="rail mono">01<b>WHY</b></p>
     <div class="wrap">
       <div class="shead reveal">
         <span class="shead__label">기회와 현실</span>
@@ -478,19 +689,18 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
           “그래서 나는 뭘 해야 하지?”
           <span>“누구의 방법을 따라야 하지?”</span>
         </blockquote>
-        <p class="body-copy" style="margin-top:32px">뿌스쿨은 그 질문에 <b>실제로 해본 사람의 경험</b>으로 답하려고 합니다. 이론보다 실행, 정보보다 결과에 가까운 강의를 만듭니다.</p>
+        <p class="body-copy br-fixed" style="margin-top:32px">뿌스쿨은 그 질문에 <b>실제로 해본 사람의 경험</b>으로 답하려고 합니다.<br class="br-d"> 이론보다 실행, 정보보다 결과에 가까운 강의를 만듭니다.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ 03. how / process ============ -->
-  <section class="section section--band" id="how">
-    <p class="rail mono">02<b>HOW</b></p>
+  <section class="section is-light" id="how">
     <div class="wrap">
-      <div class="shead reveal">
+      <div class="shead reveal" style="max-width:none">
         <span class="shead__label">기획 → 성장</span>
         <h2>강사님의 노하우가 최고의 콘텐츠로 이어지도록 합니다.</h2>
-        <p>좋은 노하우가 좋은 강의가 될 수 있도록 무엇을 가르칠지, 어떤 순서로 구성할지, 누구에게 어떻게 팔지까지 뿌스쿨이 강사님의 경험을 <b>하나의 완성된 상품</b>으로 만드는 과정을 함께합니다.</p>
+        <p class="br-fixed" style="max-width:none">좋은 노하우가 좋은 강의가 될 수 있도록 무엇을 가르칠지,<br class="br-d"> 어떤 순서로 구성할지, 누구에게 어떻게 팔지까지 뿌스쿨이<br class="br-d"> 강사님의 경험을 <b>하나의 완성된 상품</b>으로 만드는 과정을 함께합니다.</p>
       </div>
 
       <div class="process reveal">
@@ -527,7 +737,6 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
   <!-- ============ 04. support ============ -->
   <section class="section" id="support">
-    <p class="rail mono">03<b>SUPPORT</b></p>
     <div class="wrap">
       <div class="shead reveal">
         <span class="shead__label">뿌스쿨이 함께하는 것</span>
@@ -539,35 +748,35 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
           <span class="list__idx">01</span>
           <div class="list__body">
             <h3>강의 기획부터 함께합니다</h3>
-            <p>막연한 아이디어도 괜찮습니다. 강사님의 경험과 강점을 바탕으로 주제, 타깃, 커리큘럼, 상품 구조까지 함께 설계합니다.</p>
+            <p class="br-fixed">막연한 아이디어도 괜찮습니다. 강사님의 경험과 강점을 바탕으로<br class="br-d"> 주제, 타깃, 커리큘럼, 상품 구조까지 함께 설계합니다.</p>
           </div>
         </li>
         <li class="list__item reveal">
           <span class="list__idx">02</span>
           <div class="list__body">
             <h3>제작 부담을 줄여드립니다</h3>
-            <p>촬영, 편집, 상세페이지 등 강의를 만들기 위해 필요한 과정을 지원합니다. 강사님이 제작자가 될 필요는 없습니다.</p>
+            <p class="br-fixed">촬영, 편집, 상세페이지 등 강의를 만들기 위해 필요한 과정을 지원합니다.<br class="br-d"> 강사님이 제작자가 될 필요는 없습니다.</p>
           </div>
         </li>
         <li class="list__item reveal">
           <span class="list__idx">03</span>
           <div class="list__body">
             <h3>판매와 마케팅까지 고민합니다</h3>
-            <p>강의를 올려두는 것에서 끝나지 않습니다. 누가 이 강의를 필요로 하는지, 어떤 메시지로 고객에게 전달할지까지 마케팅 전문가가 설계합니다.</p>
+            <p class="br-fixed">강의를 올려두는 것에서 끝나지 않습니다. 누가 이 강의를 필요로 하는지,<br class="br-d"> 어떤 메시지로 고객에게 전달할지까지 마케팅 전문가가 설계합니다.</p>
           </div>
         </li>
         <li class="list__item reveal">
           <span class="list__idx">04</span>
           <div class="list__body">
             <h3>경험을 새로운 수익원으로 만듭니다</h3>
-            <p>지금까지 쌓아온 경험과 노하우를 한 번 만들고 끝나는 콘텐츠가 아니라 지속적으로 활용할 수 있는 자산으로 만듭니다.</p>
+            <p class="br-fixed">지금까지 쌓아온 경험과 노하우를 한 번 만들고 끝나는 콘텐츠가 아니라<br class="br-d"> 지속적으로 활용할 수 있는 자산으로 만듭니다.</p>
           </div>
         </li>
         <li class="list__item reveal">
           <span class="list__idx">05</span>
           <div class="list__body">
             <h3>개인 브랜딩을 확장시켜 드립니다</h3>
-            <p>강의를 만드는 과정은 강사님의 전문성을 정리하고 보여주는 과정이기도 합니다. 콘텐츠, 인터뷰, 마케팅을 통해 강사님의 이름과 전문 분야를 더 많은 사람에게 알립니다.</p>
+            <p class="br-fixed">강의를 만드는 과정은 강사님의 전문성을 정리하고 보여주는 과정이기도 합니다.<br class="br-d"> 콘텐츠, 인터뷰, 마케팅을 통해 강사님의 이름과 전문 분야를 더 많은 사람에게 알립니다.</p>
           </div>
         </li>
       </ul>
@@ -575,13 +784,12 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
   </section>
 
   <!-- ============ 05. who ============ -->
-  <section class="section section--band" id="who">
-    <p class="rail mono">04<b>WHO</b></p>
+  <section class="section is-light" id="who">
     <div class="wrap">
-      <div class="shead reveal">
+      <div class="shead reveal" style="max-width:none">
         <span class="shead__label">이런 분을 찾습니다</span>
         <h2>강의가 처음이어도 괜찮습니다.</h2>
-        <p>이미 완성된 강의와 화려한 강의 경력, 물론 중요합니다. 하지만 뿌스쿨이 제일 중요하게 생각하는 건 <b>직접 해보고, 직접 결과를 만들어본 경험</b>입니다.</p>
+        <p class="br-fixed">이미 완성된 강의와 화려한 강의 경력, 물론 중요합니다.<br class="br-d"> 하지만 뿌스쿨이 제일 중요하게 생각하는 건 <b>직접 해보고, 직접 결과를 만들어본 경험</b>입니다.</p>
       </div>
 
       <div class="reveal">
@@ -599,27 +807,25 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
   <!-- ============ 06. fields ============ -->
   <section class="section section--tight" id="fields">
-    <p class="rail mono">05<b>FIELD</b></p>
     <div class="wrap">
       <div class="shead reveal">
         <span class="shead__label">현재 진행 분야</span>
         <h2>지금, 가장 현실적인 기회부터 시작합니다.</h2>
       </div>
-      <div class="fields reveal">
-        <div class="field"><span class="field__no mono">01</span><span class="field__name">AI 숏폼 제작</span></div>
-        <div class="field"><span class="field__no mono">02</span><span class="field__name">AI 활용 부업</span></div>
-        <div class="field"><span class="field__no mono">03</span><span class="field__name">유튜브 · SNS 수익화</span></div>
-        <div class="field"><span class="field__no mono">04</span><span class="field__name">블로그 · 콘텐츠 수익화</span></div>
+      <div class="fgrid reveal">
+        <div class="fcell"><div class="fcell__top"><span class="fcell__no">01</span><svg class="fcell__glyph" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="13" y="5" width="18" height="34" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M19.5 17.5v9l8-4.5-8-4.5z" fill="currentColor"/></svg></div><span class="fcell__name">AI 숏폼 제작</span></div>
+        <div class="fcell"><div class="fcell__top"><span class="fcell__no">02</span><svg class="fcell__glyph" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 6c1.2 8.4 7.6 14.8 16 16-8.4 1.2-14.8 7.6-16 16-1.2-8.4-7.6-14.8-16-16 8.4-1.2 14.8-7.6 16-16z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><span class="fcell__name">AI 활용 부업</span></div>
+        <div class="fcell"><div class="fcell__top"><span class="fcell__no">03</span><svg class="fcell__glyph" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.8"/><path d="M18.5 15.5v13l11-6.5-11-6.5z" fill="currentColor"/></svg></div><span class="fcell__name">유튜브 · SNS 수익화</span></div>
+        <div class="fcell"><div class="fcell__top"><span class="fcell__no">04</span><svg class="fcell__glyph" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M8 12h28M8 22h28M8 32h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><span class="fcell__name">블로그 · 콘텐츠 수익화</span></div>
       </div>
       <div class="reveal">
-        <p class="body-copy">뿌스쿨은 <b>쉽고 현실적인 새로운 수입 만들기</b>에서 시작합니다. 실제로 시작할 수 있는 분야의 강사님들과 강의를 만들고 있습니다.</p>
+        <p class="body-copy br-fixed">뿌스쿨은 <b>쉽고 현실적인 새로운 수입 만들기</b>에서 시작합니다.<br class="br-d"> 실제로 시작할 수 있는 분야의 강사님들과 강의를 만들고 있습니다.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ 07. team ============ -->
   <section class="section section--band" id="team">
-    <p class="rail mono">06<b>TEAM</b></p>
     <div class="wrap">
       <div class="shead reveal">
         <span class="shead__label">만드는 사람들</span>
@@ -628,72 +834,113 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
       <div class="stats reveal">
         <div class="stat">
-          <span class="stat__tag mono">EDUCATION</span>
-          <span class="stat__fig">1,000억</span>
+          <span class="stat__tag">EDUCATION</span>
+          <span class="stat__fig" data-count="1000" data-suffix="억" data-comma="1">1,000억</span>
           <span class="stat__desc">매출 1,000억대의 교육 회사 PM 출신</span>
         </div>
         <div class="stat">
-          <span class="stat__tag mono">BUSINESS</span>
-          <span class="stat__fig">20억</span>
+          <span class="stat__tag">BUSINESS</span>
+          <span class="stat__fig" data-count="20" data-suffix="억">20억</span>
           <span class="stat__desc">투자금 0원으로 연매출 20억을 만들어본 사업가</span>
         </div>
         <div class="stat stat--hi">
-          <span class="stat__tag mono">PERFORMANCE</span>
-          <span class="stat__fig">1,200%</span>
-          <span class="stat__desc">단 하나의 광고 소재로 ROAS 1,200%를 만들어본 멤버</span>
-        </div>
-        <div class="stat">
-          <span class="stat__tag mono">COMMUNITY</span>
-          <span class="stat__fig stat__fig--ko">빌더</span>
-          <span class="stat__desc">콘텐츠, 커뮤니티 빌더</span>
+          <span class="stat__tag">PERFORMANCE</span>
+          <span class="stat__fig" data-count="1200" data-suffix="%" data-comma="1">1,200%</span>
+          <span class="stat__desc">단 하나의 광고 소재로 ROAS 1,200%를 만들어본 마케터</span>
         </div>
       </div>
 
       <div class="reveal">
-        <p class="body-copy">뿌스쿨은 단순히 강사를 모아 강의를 판매하는 플랫폼이 아닙니다. 교육을 기획하고, 사업을 만들고, 마케팅을 통해 매출로 만든 사람들이 모였습니다.</p>
-        <p class="body-copy">강사님의 경험을 좋은 콘텐츠로 만들고, 고객에게 판매하고, 수강생의 결과까지 만들어내는 것 <b>우리가 가장 잘하는 일입니다.</b></p>
+        <p class="body-copy br-fixed">뿌스쿨은 단순히 강사를 모아 강의를 판매하는 플랫폼이 아닙니다.<br class="br-d"> 교육을 기획하고, 사업을 만들고, 마케팅을 통해 매출로 만든 사람들이 모였습니다.</p>
+        <p class="body-copy br-fixed">강사님의 경험을 좋은 콘텐츠로 만들고, 고객에게 판매하고,<br class="br-d"> 수강생의 결과까지 만들어내는 것 <b>우리가 가장 잘하는 일입니다.</b></p>
       </div>
     </div>
   </section>
 
   <!-- ============ 08. partnership ============ -->
-  <section class="section statement" id="partnership">
-    <p class="rail mono">07<b>PARTNER</b></p>
-    <div class="wrap">
-      <div class="statement__grid">
-        <div class="shead reveal" style="margin-bottom:0">
-          <span class="shead__label">파트너십</span>
-          <h2>좋은 강의 하나를, 제대로 함께 키우겠습니다.</h2>
-        </div>
-        <div class="reveal">
-          <p class="body-copy">뿌스쿨은 많은 강의를 빠르게 채우기보다 좋은 강사님과 좋은 강의 하나를 제대로 만드는 것을 더 중요하게 생각합니다.</p>
-          <p class="body-copy">정해진 틀에 강의를 넣는 방식보다 강사님의 경험과 콘텐츠에 맞춰 <b>강의 방향부터 상품 구성, 판매 전략까지 함께 설계합니다.</b></p>
-          <p class="body-copy">단순한 입점 관계가 아니라 좋은 강사님과 좋은 콘텐츠를 더 오래, 더 크게 키우는 관계를 만들고 싶습니다.</p>
-        </div>
+  <section class="section statement is-light" id="partnership">
+    <div class="wrap partner__grid">
+      <!-- 협업 그래픽 — 두 원이 만나 하나의 중심을 만든다 -->
+      <div class="partner__vis reveal" aria-hidden="true">
+        <!-- 나이테 — 강의 하나를 오래, 크게 키워온 흔적. 바깥의 흐린 점들은 '빠르게 채운 많은 강의' -->
+        <svg viewBox="0 0 540 560">
+          <defs>
+            <filter id="pv-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>
+          </defs>
+          <circle cx="270" cy="280" r="150" fill="#2F5CD6" opacity=".08" filter="url(#pv-soft)"/>
+          <g class="pv-dots" fill="#0C1B36">
+            <circle cx="504" cy="378" r="2.2" opacity="0.19"/>
+            <circle cx="318" cy="33" r="1.8" opacity="0.28"/>
+            <circle cx="220" cy="32" r="2.2" opacity="0.35"/>
+            <circle cx="42" cy="390" r="2.2" opacity="0.28"/>
+            <circle cx="507" cy="180" r="1.4" opacity="0.19"/>
+            <circle cx="30" cy="288" r="2.2" opacity="0.28"/>
+            <circle cx="101" cy="111" r="2.2" opacity="0.36"/>
+            <circle cx="48" cy="171" r="1.8" opacity="0.31"/>
+            <circle cx="478" cy="140" r="1.4" opacity="0.37"/>
+            <circle cx="522" cy="266" r="1.4" opacity="0.33"/>
+            <circle cx="155" cy="496" r="2.2" opacity="0.31"/>
+            <circle cx="216" cy="52" r="2.2" opacity="0.24"/>
+            <circle cx="445" cy="450" r="2.2" opacity="0.40"/>
+            <circle cx="487" cy="412" r="1.8" opacity="0.38"/>
+            <circle cx="513" cy="310" r="1.8" opacity="0.37"/>
+            <circle cx="511" cy="347" r="1.4" opacity="0.26"/>
+            <circle cx="57" cy="154" r="1.8" opacity="0.29"/>
+            <circle cx="511" cy="278" r="1.4" opacity="0.20"/>
+            <circle cx="16" cy="223" r="1.8" opacity="0.24"/>
+            <circle cx="249" cy="527" r="1.8" opacity="0.25"/>
+            <circle cx="520" cy="215" r="1.8" opacity="0.26"/>
+            <circle cx="437" cy="106" r="2.2" opacity="0.33"/>
+            <circle cx="479" cy="434" r="2.2" opacity="0.24"/>
+            <circle cx="102" cy="94" r="1.8" opacity="0.28"/>
+            <circle cx="258" cy="516" r="1.8" opacity="0.18"/>
+            <circle cx="55" cy="404" r="1.4" opacity="0.26"/>
+          </g>
+          <g class="pv-rings" fill="none" stroke="#2F5CD6">
+            <ellipse class="ring" cx="270" cy="280" rx="17.7" ry="18.0" transform="rotate(-2.1 270 280)" stroke-width="1.1" opacity="0.55" style="--d:0.25s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="40.2" ry="40.3" transform="rotate(-7.0 270 280)" stroke-width="1.1" opacity="0.55" style="--d:0.47s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="64.1" ry="67.3" transform="rotate(-3.9 270 280)" stroke-width="1.6" opacity="0.85" style="--d:0.69s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="94.5" ry="98.9" transform="rotate(-0.5 270 280)" stroke-width="1.1" opacity="0.55" style="--d:0.91s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="132.6" ry="129.8" transform="rotate(2.2 270 280)" stroke-width="1.1" opacity="0.55" style="--d:1.13s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="164.5" ry="169.4" transform="rotate(5.9 270 280)" stroke-width="1.6" opacity="0.85" style="--d:1.35s"/>
+            <ellipse class="ring" cx="270" cy="280" rx="210.3" ry="213.0" transform="rotate(2.7 270 280)" stroke-width="1.1" opacity="0.55" style="--d:1.57s"/>
+          </g>
+          <circle class="pv-seed" cx="270" cy="280" r="5" fill="#2F5CD6"/>
+          <circle class="pv-seed" cx="270" cy="280" r="2" fill="#F7F6F2"/>
+          <!-- 시작점에서 바깥 테두리까지 — 오늘부터 키워온 시간 -->
+          <path class="pv-axis" d="M270 280 L270 70" stroke="#2F5CD6" stroke-width="1" stroke-dasharray="2 5" opacity=".45"/>
+          <circle cx="270" cy="70" r="3.5" fill="#C9A24E"/>
+        </svg>
+      </div>
+      <div class="reveal">
+        <span class="shead__label">파트너십</span>
+        <h2 style="margin-bottom:22px">좋은 강의 하나를, 제대로 함께 키우겠습니다.</h2>
+        <p class="body-copy">뿌스쿨은 많은 강의를 빠르게 채우기보다 좋은 강사님과 좋은 강의 하나를 제대로 만드는 것을 더 중요하게 생각합니다.</p>
+        <p class="body-copy">정해진 틀에 강의를 넣는 방식보다 강사님의 경험과 콘텐츠에 맞춰 <b>강의 방향부터 상품 구성, 판매 전략까지 함께 설계합니다.</b></p>
+        <p class="body-copy">단순한 입점 관계가 아니라 좋은 강사님과 좋은 콘텐츠를 더 오래, 더 크게 키우는 관계를 만들고 싶습니다.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ 09. vision ============ -->
-  <section class="section section--tight section--band" id="vision">
-    <p class="rail mono">08<b>VISION</b></p>
-    <div class="wrap">
-      <div class="statement__grid">
-        <div class="shead reveal" style="margin-bottom:0">
-          <span class="shead__label">앞으로</span>
-          <h2>돈 버는 법에서 시작해, 더 나은 삶을 배우는 곳으로.</h2>
-        </div>
-        <div class="reveal">
-          <p class="body-copy">지금은 부업과 수익화에서 시작하지만 뿌스쿨이 궁극적으로 만들고 싶은 것은 더 큽니다.</p>
-          <p class="body-copy">일, 돈, AI, 건강, 자기 관리까지 앞으로의 삶을 더 잘 살아가기 위해 필요한 것들을 누구나 어렵지 않게 배울 수 있는 플랫폼. <b>그 시작을 강사님과 함께 만들고 싶습니다.</b></p>
-        </div>
+  <section class="section vision" id="vision">
+    <div class="vision__bg" aria-hidden="true">
+      <div class="vision__row"><span>일</span><span>돈</span><span>AI</span><span>건강</span><span>자기 관리</span><span>일</span><span>돈</span><span>AI</span><span>건강</span><span>자기 관리</span></div>
+    </div>
+    <div class="wrap vision__in">
+      <div class="reveal">
+        <span class="shead__label">앞으로</span>
+        <h2 style="max-width:none">돈 버는 법에서 시작해,<br class="br-d"> 더 나은 삶을 배우는 곳으로.</h2>
+      </div>
+      <div class="reveal vision__body">
+        <p class="body-copy">지금은 부업과 수익화에서 시작하지만 뿌스쿨이 궁극적으로 만들고 싶은 것은 더 큽니다.</p>
+        <p class="body-copy br-fixed">일, 돈, AI, 건강, 자기 관리까지 앞으로의 삶을 더 잘 살아가기 위해 필요한 것들을<br class="br-d"> 누구나 어렵지 않게 배울 수 있는 플랫폼. <b>그 시작을 강사님과 함께 만들고 싶습니다.</b></p>
       </div>
     </div>
   </section>
 
   <!-- ============ 10. faq ============ -->
-  <section class="section" id="faq">
-    <p class="rail mono">09<b>FAQ</b></p>
+  <section class="section is-light" id="faq">
     <div class="wrap">
       <div class="shead reveal">
         <span class="shead__label">자주 묻는 질문</span>
@@ -782,10 +1029,10 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       <p class="cta__mark wm"><span class="wm__a">뿌</span><span class="wm__b">스쿨</span></p>
       <p class="cta__line">부를 배우고, 새로운 부를 만들어가는 곳.</p>
       <div class="cta__actions">
-        <a class="btn btn--primary btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%80%EB%B3%8D%EA%B2%8C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%20%EB%82%98%EB%88%84%EA%B8%B0">가볍게 이야기 나누기</a>
+        <a class="btn btn--primary btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">가볍게 이야기 나누기</a>
       </div>
-      <p class="cta__mail">문의 <a href="mailto:sks@ppsc.kr">sks@ppsc.kr</a></p>
+      <p class="cta__mail">문의 <a href="mailto:kss@ppsc.kr">kss@ppsc.kr</a></p>
     </div>
   </section>
 </main>
@@ -795,7 +1042,7 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
     <span>뿌스쿨</span>
     <span aria-hidden="true">/</span>
     <span>부 + 부 = 뿌</span>
-    <span class="foot__sp"><a href="mailto:sks@ppsc.kr">sks@ppsc.kr</a></span>
+    <span class="foot__sp"><a href="mailto:kss@ppsc.kr">kss@ppsc.kr</a></span>
   </div>
 </footer>
 
@@ -819,6 +1066,12 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
+    var secs = document.querySelectorAll('.section, .proof');
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io2.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.02 });
+    secs.forEach(function (el) { io2.observe(el); });
+
     items.forEach(function (el, i) {
       // 첫 화면에 이미 보이는 요소는 즉시 노출
       if (el.getBoundingClientRect().top < window.innerHeight * 1.05) {
@@ -829,10 +1082,6 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       io.observe(el);
     });
 
-    // 안전장치: 스크롤 이벤트가 없는 환경(썸네일 캡처 등)에서도 콘텐츠가 반드시 노출되도록
-    setTimeout(function () {
-      items.forEach(function (el) { el.classList.add('is-in'); });
-    }, 2000);
   }
 
   /* --- FAQ accordion --- */
@@ -878,7 +1127,60 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
     });
   }
 
-  function start() { initReveal(); initFaq(); }
+  /* --- 숫자 카운트업 --- */
+  function initCount() {
+    var els = document.querySelectorAll('[data-count]');
+    if (!els.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmt(n, el) {
+      var comma = el.getAttribute('data-comma') === '1';
+      var mode = el.getAttribute('data-fmt');
+      var suf = el.getAttribute('data-suffix') || '';
+      if (mode === 'man') { var m = Math.round(n / 1000) / 10; return (m >= 1 ? Math.round(m) + '만' : Math.round(n).toLocaleString('ko-KR')) + ' ' + suf; }
+      var v = Math.round(n);
+      return (comma ? v.toLocaleString('ko-KR') : String(v)) + suf;
+    }
+    function run(el) {
+      var target = parseFloat(el.getAttribute('data-count'));
+      var final = el.textContent;
+      if (reduce || !('requestAnimationFrame' in window)) { el.textContent = final; return; }
+      var dur = 1400, t0 = null;
+      function step(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * e, el);
+        if (p < 1) requestAnimationFrame(step); else el.textContent = final;
+      }
+      requestAnimationFrame(step);
+    }
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.4 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* --- 헤더 스크롤 상태 + 히어로 패럴랙스 --- */
+  function initScroll() {
+    var hdr = document.querySelector('.hdr');
+    var vis = document.querySelector('.hero__vis');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY || 0;
+        if (hdr) hdr.classList.toggle('is-scrolled', y > 8);
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function start() { initReveal(); initFaq(); initCount(); initScroll(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
