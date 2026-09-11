@@ -9,6 +9,11 @@
 <meta property="og:title" content="뿌스쿨 강사 파트너">
 <meta property="og:description" content="당신의 경험, 수익이 되는 강의로 만들어드립니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og.png">
 <meta name="theme-color" content="#0A142A">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -155,6 +160,16 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 .nav a{text-decoration:none;transition:color .18s ease}
 .nav a:hover{color:var(--paper)}
 .hdr .btn{margin-left:20px}
+/* 모바일 메뉴 */
+.menu-btn{display:none;width:40px;height:40px;margin-left:4px;border:0;background:none;cursor:pointer;padding:9px;flex-direction:column;justify-content:space-between}
+.menu-btn span{display:block;height:2px;background:var(--paper);border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+.mnav{display:none;flex-direction:column;border-top:1px solid var(--line-soft);background:rgba(10,20,42,.96)}
+.mnav a{padding:16px var(--gutter);font-size:1rem;font-weight:500;color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line-soft)}
+.mnav a:last-child{border-bottom:0}
+.mnav.is-open{display:flex}
 
 /* buttons */
 .btn{
@@ -487,15 +502,20 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
 .foot{
   border-top:1px solid var(--line-soft);background:var(--ink);
-  padding-block:28px;
+  padding-block:44px 36px;
 }
-.foot__in{
-  display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;
-  font-size:.78rem;letter-spacing:.06em;color:var(--muted-2);
+.foot__top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px}
+.foot__top .wm{font-size:1.1rem}
+.foot__mail{font-size:.86rem;color:var(--muted);text-decoration:none}
+.foot__mail:hover{color:var(--paper)}
+.foot__info{font-size:.8rem;line-height:1.9;color:var(--muted-2);letter-spacing:.01em}
+.foot__info p{margin:0}
+.foot__sep{margin:0 8px;color:var(--line)}
+.foot__copy{margin-top:18px;font-size:.74rem;color:var(--muted-2);letter-spacing:.02em;opacity:.8}
+@media (max-width:620px){
+  .foot__top{flex-direction:column;gap:8px}
+  .foot__sep{display:block;height:0;margin:0;overflow:hidden}
 }
-.foot__in a{color:var(--muted);text-decoration:none}
-.foot__in a:hover{color:var(--paper)}
-.foot__sp{margin-left:auto}
 
 /* ---------- 14. reveal ---------- */
 .js .reveal{opacity:0;transform:translateY(14px)}
@@ -532,6 +552,8 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
 @media (max-width:860px){
   .nav{display:none}
+  .menu-btn{display:flex}
+  .hdr .btn{margin-left:auto}
   .statement__grid{grid-template-columns:1fr}
   .partner__grid{grid-template-columns:1fr}
   .partner__vis{max-width:420px;margin-inline:auto}
@@ -541,8 +563,9 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 
 @media (max-width:620px){
   :root{--fs-body:1.0625rem;--fs-lead:1.09rem}
-  .hdr__in{height:58px;gap:12px}
+  .hdr__in{height:58px;gap:10px}
   .brand__eq{display:none}
+  .hdr .btn--sm{padding:9px 12px;font-size:.8rem}
   .process__track{grid-template-columns:1fr;gap:0}
   .process__track::before{
     left:7px;right:auto;top:6px;bottom:6px;width:1px;height:auto;
@@ -580,7 +603,16 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn--primary btn--sm" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기</a>
+    <button class="menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mnav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mnav" id="mnav" aria-label="모바일 메뉴">
+    <a href="#how">함께하는 일</a>
+    <a href="#who">적합한 분</a>
+    <a href="#team">팀</a>
+    <a href="#faq">FAQ</a>
+  </nav>
 </header>
 
 <main id="main">
@@ -641,7 +673,6 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       </div>
       <div class="hero__actions">
         <a class="btn btn--primary btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">가볍게 이야기 나누기</a>
       </div>
       <p class="hero__meta">
         <span class="eq">부 + 부 = 뿌</span>
@@ -672,7 +703,7 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
           <span class="proof__num">300억</span>
         </div>
       </div>
-      <p class="proof__note">* 2025년 온라인 강의 업계 공개 자료 기준, 뿌스쿨 자체 실적 아님</p>
+      <p class="proof__note">* 2025년 온라인 강의 업계 공개 자료 기준 및 추정치</p>
     </div>
   </section>
 
@@ -1030,7 +1061,6 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
       <p class="cta__line">부를 배우고, 새로운 부를 만들어가는 곳.</p>
       <div class="cta__actions">
         <a class="btn btn--primary btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLScOxYULJ78rf_pmLrn89b7XXE_nepQ6BKSWyZo6Gfp3nXhMxQ/viewform?usp=sharing&amp;ouid=107547695187385508343" target="_blank" rel="noopener">가볍게 이야기 나누기</a>
       </div>
       <p class="cta__mail">문의 <a href="mailto:kss@ppsc.kr">kss@ppsc.kr</a></p>
     </div>
@@ -1038,11 +1068,16 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__in">
-    <span>뿌스쿨</span>
-    <span aria-hidden="true">/</span>
-    <span>부 + 부 = 뿌</span>
-    <span class="foot__sp"><a href="mailto:kss@ppsc.kr">kss@ppsc.kr</a></span>
+  <div class="wrap">
+    <div class="foot__top">
+      <span class="wm"><span class="wm__a">뿌</span><span class="wm__b">스쿨</span></span>
+      <a class="foot__mail" href="mailto:kss@ppsc.kr">kss@ppsc.kr</a>
+    </div>
+    <div class="foot__info">
+      <p>(주) 평생자산협회 <span class="foot__sep">|</span> 대표 : 박준서</p>
+      <p>사업자등록번호 : 533-81-03919 <span class="foot__sep">|</span> 주소 : 서울특별시 강남구 강남대로94길 69, 6층 (역삼동)</p>
+    </div>
+    <p class="foot__copy">Copyright (c) (주) 평생자산협회 All Rights Reserved.</p>
   </div>
 </footer>
 
@@ -1180,7 +1215,17 @@ h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
     onScroll();
   }
 
-  function start() { initReveal(); initFaq(); initCount(); initScroll(); }
+  /* --- 모바일 메뉴 --- */
+  function initMenu() {
+    var btn = document.querySelector('.menu-btn'), nav = document.getElementById('mnav');
+    if (!btn || !nav) return;
+    function setOpen(o) { nav.classList.toggle('is-open', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); btn.setAttribute('aria-label', o ? '메뉴 닫기' : '메뉴 열기'); }
+    btn.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
+    nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 860) setOpen(false); });
+  }
+
+  function start() { initReveal(); initFaq(); initCount(); initScroll(); initMenu(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
