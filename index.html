@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>뿌스쿨 강사 파트너</title>
+<meta name="description" content="뿌스쿨은 실제 경험과 노하우를 수익이 되는 콘텐츠로 만드는 실전 교육 플랫폼입니다. 강의 기획부터 제작, 판매, 마케팅까지 함께합니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="뿌스쿨 강사 파트너">
+<meta property="og:description" content="당신의 경험, 수익이 되는 강의로 만들어드립니다.">
+<meta property="og:locale" content="ko_KR">
+<meta name="theme-color" content="#0A1630">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  html{color-scheme:dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<style>
+/* Pretendard — 로컬 설치본 우선 사용, 배포본은 CDN에서 로드 */
+@font-face{font-family:"Pretendard";font-weight:400;font-style:normal;font-display:swap;
+  src:local("Pretendard Variable"),local("PretendardVariable"),local("Pretendard Regular"),local("Pretendard");}
+@font-face{font-family:"Pretendard";font-weight:500;font-style:normal;font-display:swap;
+  src:local("Pretendard Variable"),local("PretendardVariable"),local("Pretendard Medium");}
+@font-face{font-family:"Pretendard";font-weight:600;font-style:normal;font-display:swap;
+  src:local("Pretendard Variable"),local("PretendardVariable"),local("Pretendard SemiBold");}
+@font-face{font-family:"Pretendard";font-weight:700;font-style:normal;font-display:swap;
+  src:local("Pretendard Variable"),local("PretendardVariable"),local("Pretendard Bold");}
+</style>
+
+<style>
+/* ============================================================
+   뿌스쿨 강사 파트너 랜딩
+   0. tokens  1. base  2. layout  3. header  4. hero
+   5. section-head  6. process  7. support  8. checklist
+   9. fields  10. stats  11. statement  12. faq  13. cta/footer
+   14. reveal  15. responsive
+   ============================================================ */
+
+/* ---------- 0. tokens ---------- */
+:root{
+  /* 명함 시안 기준: Deep Navy + 골드 + 스틸 블루 */
+  /* 바탕 3단계 — 명함 네이비(#0C1B36) 기준 */
+  --ink:#0A1630;          /* base */
+  --ink-2:#0E1D3A;        /* 밴드 */
+  --ink-3:#132549;        /* 서피스(타일·셀) */
+  --line:#223459;
+  --line-soft:#1A2A4C;
+
+  /* 액센트 3색 — 역할 고정 */
+  --cobalt:#3B6DE0;       /* 버튼·인터랙션 전용 */
+  --cobalt-hover:#2F5CC9;
+  --cobalt-dim:rgba(59,109,224,.16);
+  --cobalt-soft:#8FB0DE;  /* 라벨·번호·숫자 — 로고 '스쿨' 스틸 블루 */
+  --gold:#CFA24A;         /* 브랜드 강조 한 곳씩 — 로고 '뿌' */
+  --gold-soft:#E4C77A;
+
+  /* 텍스트 3단계 */
+  --paper:#F4F6FA;
+  --muted:#A6B3CA;
+  --muted-2:#6F7F9C;
+
+  --ff-sans:"Pretendard Variable","Pretendard",sans-serif;
+  --ff-mono:"Pretendard Variable","Pretendard",sans-serif;
+
+  --fs-body:1.0625rem;   /* 17px */
+  --fs-lead:1.1875rem;   /* 19px */
+  --fs-h2:clamp(1.75rem,1.15rem + 2.5vw,2.75rem);
+  --fs-h1:clamp(2.1rem,1.3rem + 3.6vw,3.9rem);
+
+  --wrap:1080px;
+  --gutter:clamp(20px,5vw,40px);
+  --sec-y:clamp(72px,9vw,132px);
+}
+
+/* ---------- 1. base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--ff-sans);
+  font-size:var(--fs-body);
+  font-weight:400;
+  line-height:1.75;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
+ul,ol{padding:0;margin:0;list-style:none}
+a{color:inherit}
+img{max-width:100%}
+strong{font-weight:600;color:var(--paper)}
+
+h1,h2,h3{font-weight:700;letter-spacing:-.032em;line-height:1.26;text-wrap:balance}
+h2{font-size:var(--fs-h2)}
+h3{font-size:1.15rem;letter-spacing:-.02em;line-height:1.5}
+
+.mono{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+
+:focus-visible{outline:2px solid var(--cobalt-soft);outline-offset:3px;border-radius:2px}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--cobalt);color:#fff;padding:12px 18px;font-size:.95rem;
+}
+.skip:focus{left:12px;top:12px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ---------- 2. layout ---------- */
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--sec-y);position:relative}
+.section--band{background:var(--ink-2);border-block:1px solid var(--line-soft)}
+.section--tight{padding-block:clamp(56px,7vw,96px)}
+
+.rule{height:1px;background:var(--line-soft);border:0;margin:0}
+
+/* 좌측 마진 레일 (데스크탑 전용) */
+.rail{
+  position:absolute;top:var(--sec-y);left:max(calc((100% - var(--wrap))/2 - 116px),16px);
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;
+  color:var(--muted-2);text-transform:uppercase;line-height:1.4;
+  writing-mode:horizontal-tb;
+}
+.rail b{display:block;color:var(--cobalt-soft);font-weight:700}
+
+/* ---------- 3. header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:40;
+  background:rgba(10,22,48,.84);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.hdr__in{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;flex:0 0 auto}
+.brand__mark{font-size:1.28rem;font-weight:700;letter-spacing:-.045em}
+.brand__eq{font-size:.68rem;color:var(--muted-2);letter-spacing:.04em}
+
+/* 워드마크 — 명함 로고의 골드 + 스틸 블루 2톤 (플랫) */
+.wm{font-weight:700;letter-spacing:-.045em}
+.wm__a{color:var(--gold-soft)}
+.wm__b{color:var(--cobalt-soft)}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:.925rem;color:var(--muted)}
+.nav a{text-decoration:none;transition:color .18s ease}
+.nav a:hover{color:var(--paper)}
+.hdr .btn{margin-left:20px}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-size:.95rem;font-weight:500;letter-spacing:-.01em;
+  padding:13px 22px;border-radius:6px;text-decoration:none;
+  border:1px solid transparent;white-space:nowrap;
+  transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.btn__ar{font-size:.95em;transition:transform .2s ease}
+.btn:hover .btn__ar{transform:translateX(3px)}
+.btn--primary{background:var(--cobalt);color:#fff}
+.btn--primary:hover{background:var(--cobalt-hover);transform:translateY(-1px)}
+.btn--ghost{border-color:var(--line);color:var(--paper);background:transparent}
+.btn--ghost:hover{border-color:var(--cobalt-soft);background:var(--cobalt-dim);transform:translateY(-1px)}
+.btn--sm{padding:9px 16px;font-size:.875rem;border-radius:5px}
+.btn--lg{padding:17px 30px;font-size:1.03rem}
+
+/* ---------- 4. hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding-block:clamp(76px,10vw,140px) clamp(72px,9vw,124px);
+  border-bottom:1px solid var(--line-soft);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 440px at 8% -10%,rgba(59,109,224,.24),transparent 62%),
+    radial-gradient(620px 320px at 92% 110%,rgba(143,176,222,.08),transparent 60%);
+}
+.hero__in{position:relative;max-width:900px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.74rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--cobalt-soft);margin-bottom:26px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--cobalt-soft)}
+.hero h1{font-size:var(--fs-h1);margin-bottom:28px}
+.hero h1 .hl{color:var(--gold-soft)}
+.hero__lead{font-size:var(--fs-lead);color:#C3CEE2;max-width:42em;line-height:1.82}
+.hero__lead b{color:var(--paper);font-weight:600}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.hero__meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:34px;
+  font-size:.8rem;color:var(--muted-2);letter-spacing:.06em;
+}
+.hero__meta .eq{color:var(--paper)}
+.hero__meta .dot{color:var(--line)}
+
+/* ---------- 5. section head ---------- */
+.shead{max-width:50ch;margin-bottom:clamp(38px,4.5vw,58px)}
+.shead__label{
+  display:block;font-size:.72rem;font-weight:600;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--cobalt-soft);margin-bottom:18px;
+}
+.shead p{margin-top:20px;color:var(--muted);font-size:var(--fs-lead);line-height:1.8;max-width:40em}
+.shead p b{color:var(--paper);font-weight:600}
+
+.body-copy{color:var(--muted);max-width:40em;line-height:1.85}
+.body-copy + .body-copy{margin-top:16px}
+.body-copy b{color:var(--paper);font-weight:600}
+
+/* pull quote */
+.pull{
+  margin-top:40px;padding:26px 0 26px 26px;
+  border-left:2px solid var(--gold);
+  font-size:clamp(1.15rem,.95rem + .8vw,1.5rem);
+  font-weight:600;letter-spacing:-.025em;line-height:1.55;color:var(--paper);
+}
+.pull span{display:block;color:var(--gold-soft)}
+
+/* ---------- 6. process ---------- */
+.process{margin-top:clamp(40px,5vw,64px)}
+.process__track{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  position:relative;gap:0;
+}
+.process__track::before{
+  content:"";position:absolute;top:7px;left:6%;right:6%;height:1px;
+  background:linear-gradient(90deg,var(--line),var(--cobalt-soft));
+}
+.step{position:relative;text-align:center;padding-top:0}
+.step__dot{
+  width:15px;height:15px;border-radius:50%;margin:0 auto 18px;
+  background:var(--ink);border:1px solid var(--line);position:relative;z-index:1;
+  display:grid;place-items:center;
+}
+.step__dot::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--muted-2)}
+.step:last-child .step__dot{border-color:var(--gold)}
+.step:last-child .step__dot::after{background:var(--gold-soft)}
+.step__idx{display:block;font-size:.68rem;font-weight:500;color:var(--muted-2);letter-spacing:.1em;margin-bottom:6px}
+.step__name{font-size:.84rem;font-weight:700;letter-spacing:.09em;color:var(--paper)}
+
+/* ---------- 7. support list ---------- */
+.list{border-top:1px solid var(--line-soft)}
+.list__item{
+  display:grid;grid-template-columns:88px 1fr;gap:0 32px;
+  padding-block:clamp(26px,3vw,36px);
+  border-bottom:1px solid var(--line-soft);
+}
+.list__idx{
+  font-size:.85rem;font-weight:600;
+  color:var(--cobalt-soft);letter-spacing:.1em;padding-top:.35em;
+}
+.list__body h3{margin-bottom:12px}
+.list__body p{color:var(--muted);line-height:1.82;max-width:44em}
+
+/* ---------- 8. checklist ---------- */
+.checks{display:grid;gap:2px;margin-top:8px}
+.checks li{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:18px 20px;background:var(--ink);
+  font-size:1.03rem;line-height:1.6;
+}
+.checks li:first-child{border-radius:6px 6px 0 0}
+.checks li:last-child{border-radius:0 0 6px 6px}
+.checks .tick{
+  flex:0 0 auto;width:20px;height:20px;margin-top:.2em;
+  display:grid;place-items:center;border-radius:4px;
+  background:rgba(207,162,74,.18);color:var(--gold-soft);
+  font-size:.72rem;font-weight:600;
+}
+.after-note{
+  margin-top:30px;font-size:1.08rem;font-weight:600;letter-spacing:-.02em;color:var(--paper);
+}
+.after-note em{font-style:normal;color:var(--gold-soft)}
+
+/* ---------- 9. fields ---------- */
+.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px}
+.field{
+  padding:22px 20px 24px;border:1px solid var(--line);border-radius:8px;
+  background:var(--ink-3);
+  transition:border-color .2s ease,transform .2s ease;
+}
+.field:hover{border-color:var(--cobalt-soft);transform:translateY(-2px)}
+.field__no{display:block;font-size:.7rem;font-weight:600;color:var(--cobalt-soft);letter-spacing:.12em;margin-bottom:14px}
+.field__name{font-size:1.05rem;font-weight:600;letter-spacing:-.02em;line-height:1.45}
+
+/* ---------- 10. stats ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+  margin-bottom:clamp(38px,4.5vw,56px);
+}
+.stat{
+  padding:clamp(24px,3vw,34px) clamp(20px,2.4vw,28px);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--ink);
+}
+.stat__tag{display:block;font-size:.66rem;font-weight:600;letter-spacing:.16em;color:var(--cobalt-soft);margin-bottom:14px}
+.stat__fig{
+  display:block;font-weight:700;
+  font-size:clamp(1.8rem,1.15rem + 2.2vw,2.6rem);
+  letter-spacing:-.03em;line-height:1.1;color:var(--paper);margin-bottom:14px;
+  font-variant-numeric:tabular-nums;
+}
+.stat__fig--ko{font-size:clamp(1.55rem,1.05rem + 1.7vw,2.1rem)}
+.stat--hi .stat__fig{color:var(--gold-soft)}
+.stat__desc{font-size:.97rem;color:var(--muted);line-height:1.62}
+
+/* ---------- 11. statement ---------- */
+.statement h2{max-width:22ch}
+.statement__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:start}
+.statement__grid .body-copy{max-width:none}
+
+/* ---------- 12. faq ---------- */
+.faq{border-top:1px solid var(--line-soft)}
+.faq__item{border-bottom:1px solid var(--line-soft)}
+.faq__q{
+  width:100%;display:flex;align-items:center;gap:18px;
+  background:none;border:0;cursor:pointer;color:var(--paper);
+  font-family:inherit;font-size:1.06rem;font-weight:600;letter-spacing:-.02em;
+  text-align:left;padding:24px 0;line-height:1.5;
+  transition:color .18s ease;
+}
+.faq__q:hover{color:var(--cobalt-soft)}
+.faq__sign{
+  flex:0 0 auto;margin-left:auto;width:22px;height:22px;position:relative;
+}
+.faq__sign::before,.faq__sign::after{
+  content:"";position:absolute;left:50%;top:50%;background:var(--cobalt-soft);
+  transform:translate(-50%,-50%);transition:transform .28s ease,opacity .28s ease;
+}
+.faq__sign::before{width:13px;height:1.5px}
+.faq__sign::after{width:1.5px;height:13px}
+.faq__q[aria-expanded="true"] .faq__sign::after{transform:translate(-50%,-50%) scaleY(0);opacity:0}
+.faq__panel{overflow:hidden;height:0;transition:height .3s ease}
+.faq__panel-in{padding:0 42px 26px 0;color:var(--muted);line-height:1.85;max-width:56em}
+.faq__panel-in p + p{margin-top:10px}
+
+/* ---------- 13. cta / footer ---------- */
+.cta{
+  position:relative;overflow:hidden;
+  background:var(--ink-2);border-top:1px solid var(--line-soft);
+  padding-block:clamp(76px,9vw,124px);
+}
+.cta::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(720px 340px at 50% 0%,rgba(59,109,224,.20),transparent 64%);
+}
+.cta__in{position:relative;text-align:center;max-width:660px;margin-inline:auto}
+.cta__eq{
+  font-size:.92rem;font-weight:500;letter-spacing:.14em;
+  color:var(--muted);margin-bottom:18px;
+}
+.cta__mark{font-size:clamp(2.2rem,1.5rem + 3vw,3.4rem);font-weight:700;letter-spacing:-.045em;line-height:1.1}
+.cta__line{margin-top:18px;font-size:var(--fs-lead);color:#C3CEE2}
+.cta__actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:38px}
+.cta__mail{
+  margin-top:26px;font-size:.95rem;color:var(--muted);
+}
+.cta__mail a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line)}
+.cta__mail a:hover{border-bottom-color:var(--gold);color:var(--gold-soft)}
+
+.foot{
+  border-top:1px solid var(--line-soft);background:var(--ink);
+  padding-block:28px;
+}
+.foot__in{
+  display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;
+  font-size:.78rem;letter-spacing:.06em;color:var(--muted-2);
+}
+.foot__in a{color:var(--muted);text-decoration:none}
+.foot__in a:hover{color:var(--paper)}
+.foot__sp{margin-left:auto}
+
+/* ---------- 14. reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(12px)}
+.js .reveal.is-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* ---------- 15. responsive ---------- */
+@media (max-width:1340px){ .rail{display:none} }
+
+@media (max-width:860px){
+  .nav{display:none}
+  .statement__grid{grid-template-columns:1fr}
+  .fields{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:620px){
+  :root{--fs-body:1.0625rem;--fs-lead:1.09rem}
+  .hdr__in{height:58px;gap:12px}
+  .brand__eq{display:none}
+  .process__track{grid-template-columns:1fr;gap:0}
+  .process__track::before{
+    left:7px;right:auto;top:6px;bottom:6px;width:1px;height:auto;
+    background:linear-gradient(180deg,var(--line),var(--cobalt-soft));
+  }
+  .step{display:flex;align-items:center;gap:16px;text-align:left;padding-block:11px}
+  .step__dot{margin:0}
+  .step__idx{display:inline;margin:0 10px 0 0;font-size:.7rem}
+  .list__item{grid-template-columns:1fr;gap:10px}
+  .list__idx{padding-top:0}
+  .fields{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .hero__actions .btn,.cta__actions .btn{flex:1 1 100%}
+  .faq__panel-in{padding-right:0}
+  .foot__sp{margin-left:0;flex-basis:100%}
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<!-- ============ header ============ -->
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark wm"><span class="wm__a">뿌</span><span class="wm__b">스쿨</span></span>
+      <span class="brand__eq">부 + 부 = 뿌</span>
+    </a>
+    <nav class="nav" aria-label="주요 섹션">
+      <a href="#how">함께하는 일</a>
+      <a href="#who">적합한 분</a>
+      <a href="#team">팀</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ hero ============ -->
+  <section class="hero" id="top">
+    <div class="wrap hero__in">
+      <span class="eyebrow">강사 파트너 모집</span>
+      <h1>당신의 경험,<br><span class="hl">수익이 되는 강의</span>로 만들어드립니다.</h1>
+      <div class="hero__lead">
+        <p>뿌스쿨은 실제 경험과 노하우를 수익이 되는 콘텐츠로 만드는 실전 교육 플랫폼입니다.</p>
+        <p>강사님은 경험과 노하우에 집중해 주세요.<br>강의 기획부터 제작, 판매, 마케팅까지 <b>나머지 과정은 뿌스쿨이 합니다.</b></p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%80%EB%B3%8D%EA%B2%8C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%20%EB%82%98%EB%88%84%EA%B8%B0">가볍게 이야기 나누기</a>
+      </div>
+      <p class="hero__meta">
+        <span class="eq">부 + 부 = 뿌</span>
+        <span class="dot" aria-hidden="true">/</span>
+        <span>부를 배우고, 새로운 부를 만들어가는 곳</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 02. why ============ -->
+  <section class="section" id="why">
+    <p class="rail mono">01<b>WHY</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">기회와 현실</span>
+        <h2>기회는 많아졌지만, 시작은 여전히 어렵습니다.</h2>
+      </div>
+      <div class="reveal">
+        <p class="body-copy">사람들이 돈을 버는 방식은 빠르게 달라지고 있습니다. AI, 숏폼, 유튜브, SNS, 이커머스처럼 개인이 가진 경험과 기술을 수입으로 연결할 수 있는 방법은 계속 늘어나고 있습니다. 하지만 많은 사람들은 여전히 묻습니다.</p>
+        <blockquote class="pull">
+          “그래서 나는 뭘 해야 하지?”
+          <span>“누구의 방법을 따라야 하지?”</span>
+        </blockquote>
+        <p class="body-copy" style="margin-top:32px">뿌스쿨은 그 질문에 <b>실제로 해본 사람의 경험</b>으로 답하려고 합니다. 이론보다 실행, 정보보다 결과에 가까운 강의를 만듭니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03. how / process ============ -->
+  <section class="section section--band" id="how">
+    <p class="rail mono">02<b>HOW</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">기획 → 성장</span>
+        <h2>강사님의 노하우가 최고의 콘텐츠로 이어지도록 합니다.</h2>
+        <p>좋은 노하우가 좋은 강의가 될 수 있도록 무엇을 가르칠지, 어떤 순서로 구성할지, 누구에게 어떻게 팔지까지 뿌스쿨이 강사님의 경험을 <b>하나의 완성된 상품</b>으로 만드는 과정을 함께합니다.</p>
+      </div>
+
+      <div class="process reveal">
+        <ol class="process__track">
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__idx mono">01</span>
+            <span class="step__name">IDEA</span>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__idx mono">02</span>
+            <span class="step__name">PRODUCT</span>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__idx mono">03</span>
+            <span class="step__name">CONTENT</span>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__idx mono">04</span>
+            <span class="step__name">SALES</span>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <span class="step__idx mono">05</span>
+            <span class="step__name">GROWTH</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04. support ============ -->
+  <section class="section" id="support">
+    <p class="rail mono">03<b>SUPPORT</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">뿌스쿨이 함께하는 것</span>
+        <h2>강사님이 혼자 감당하던 과정을 나눠 갖습니다.</h2>
+      </div>
+
+      <ul class="list">
+        <li class="list__item reveal">
+          <span class="list__idx">01</span>
+          <div class="list__body">
+            <h3>강의 기획부터 함께합니다</h3>
+            <p>막연한 아이디어도 괜찮습니다. 강사님의 경험과 강점을 바탕으로 주제, 타깃, 커리큘럼, 상품 구조까지 함께 설계합니다.</p>
+          </div>
+        </li>
+        <li class="list__item reveal">
+          <span class="list__idx">02</span>
+          <div class="list__body">
+            <h3>제작 부담을 줄여드립니다</h3>
+            <p>촬영, 편집, 상세페이지 등 강의를 만들기 위해 필요한 과정을 지원합니다. 강사님이 제작자가 될 필요는 없습니다.</p>
+          </div>
+        </li>
+        <li class="list__item reveal">
+          <span class="list__idx">03</span>
+          <div class="list__body">
+            <h3>판매와 마케팅까지 고민합니다</h3>
+            <p>강의를 올려두는 것에서 끝나지 않습니다. 누가 이 강의를 필요로 하는지, 어떤 메시지로 고객에게 전달할지까지 마케팅 전문가가 설계합니다.</p>
+          </div>
+        </li>
+        <li class="list__item reveal">
+          <span class="list__idx">04</span>
+          <div class="list__body">
+            <h3>경험을 새로운 수익원으로 만듭니다</h3>
+            <p>지금까지 쌓아온 경험과 노하우를 한 번 만들고 끝나는 콘텐츠가 아니라 지속적으로 활용할 수 있는 자산으로 만듭니다.</p>
+          </div>
+        </li>
+        <li class="list__item reveal">
+          <span class="list__idx">05</span>
+          <div class="list__body">
+            <h3>개인 브랜딩을 확장시켜 드립니다</h3>
+            <p>강의를 만드는 과정은 강사님의 전문성을 정리하고 보여주는 과정이기도 합니다. 콘텐츠, 인터뷰, 마케팅을 통해 강사님의 이름과 전문 분야를 더 많은 사람에게 알립니다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 05. who ============ -->
+  <section class="section section--band" id="who">
+    <p class="rail mono">04<b>WHO</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">이런 분을 찾습니다</span>
+        <h2>강의가 처음이어도 괜찮습니다.</h2>
+        <p>이미 완성된 강의와 화려한 강의 경력, 물론 중요합니다. 하지만 뿌스쿨이 제일 중요하게 생각하는 건 <b>직접 해보고, 직접 결과를 만들어본 경험</b>입니다.</p>
+      </div>
+
+      <div class="reveal">
+        <p class="body-copy" style="margin-bottom:26px">AI, 콘텐츠, 유튜브, SNS, 온라인 판매, 부업, 재테크 등 누군가에게 실제로 도움이 될 수 있는 경험이 있다면 그 자체가 강의의 시작이 될 수 있습니다.</p>
+        <ul class="checks">
+          <li><span class="tick" aria-hidden="true">✓</span><span>본인의 분야에서 실제 결과를 만들어본 분</span></li>
+          <li><span class="tick" aria-hidden="true">✓</span><span>시행착오까지 포함해 구체적인 노하우가 있는 분</span></li>
+          <li><span class="tick" aria-hidden="true">✓</span><span>처음 시작하는 사람의 눈높이에서 설명할 수 있는 분</span></li>
+          <li><span class="tick" aria-hidden="true">✓</span><span>자신의 경험을 하나의 콘텐츠·브랜드로 확장하고 싶은 분</span></li>
+        </ul>
+        <p class="after-note"><em>“이걸 강의로 만들어도 될까?”</em> 정도의 아이디어만 있어도 충분합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06. fields ============ -->
+  <section class="section section--tight" id="fields">
+    <p class="rail mono">05<b>FIELD</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">현재 진행 분야</span>
+        <h2>지금, 가장 현실적인 기회부터 시작합니다.</h2>
+      </div>
+      <div class="fields reveal">
+        <div class="field"><span class="field__no mono">01</span><span class="field__name">AI 숏폼 제작</span></div>
+        <div class="field"><span class="field__no mono">02</span><span class="field__name">AI 활용 부업</span></div>
+        <div class="field"><span class="field__no mono">03</span><span class="field__name">유튜브 · SNS 수익화</span></div>
+        <div class="field"><span class="field__no mono">04</span><span class="field__name">블로그 · 콘텐츠 수익화</span></div>
+      </div>
+      <div class="reveal">
+        <p class="body-copy">뿌스쿨은 <b>쉽고 현실적인 새로운 수입 만들기</b>에서 시작합니다. 실제로 시작할 수 있는 분야의 강사님들과 강의를 만들고 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07. team ============ -->
+  <section class="section section--band" id="team">
+    <p class="rail mono">06<b>TEAM</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">만드는 사람들</span>
+        <h2>교육도, 사업도, 마케팅도 직접 해본 사람들이 만듭니다.</h2>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <span class="stat__tag mono">EDUCATION</span>
+          <span class="stat__fig">1,000억</span>
+          <span class="stat__desc">매출 1,000억대의 교육 회사 PM 출신</span>
+        </div>
+        <div class="stat">
+          <span class="stat__tag mono">BUSINESS</span>
+          <span class="stat__fig">20억</span>
+          <span class="stat__desc">투자금 0원으로 연매출 20억을 만들어본 사업가</span>
+        </div>
+        <div class="stat stat--hi">
+          <span class="stat__tag mono">PERFORMANCE</span>
+          <span class="stat__fig">1,200%</span>
+          <span class="stat__desc">단 하나의 광고 소재로 ROAS 1,200%를 만들어본 멤버</span>
+        </div>
+        <div class="stat">
+          <span class="stat__tag mono">COMMUNITY</span>
+          <span class="stat__fig stat__fig--ko">빌더</span>
+          <span class="stat__desc">콘텐츠, 커뮤니티 빌더</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="body-copy">뿌스쿨은 단순히 강사를 모아 강의를 판매하는 플랫폼이 아닙니다. 교육을 기획하고, 사업을 만들고, 마케팅을 통해 매출로 만든 사람들이 모였습니다.</p>
+        <p class="body-copy">강사님의 경험을 좋은 콘텐츠로 만들고, 고객에게 판매하고, 수강생의 결과까지 만들어내는 것 <b>우리가 가장 잘하는 일입니다.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08. partnership ============ -->
+  <section class="section statement" id="partnership">
+    <p class="rail mono">07<b>PARTNER</b></p>
+    <div class="wrap">
+      <div class="statement__grid">
+        <div class="shead reveal" style="margin-bottom:0">
+          <span class="shead__label">파트너십</span>
+          <h2>좋은 강의 하나를, 제대로 함께 키우겠습니다.</h2>
+        </div>
+        <div class="reveal">
+          <p class="body-copy">뿌스쿨은 많은 강의를 빠르게 채우기보다 좋은 강사님과 좋은 강의 하나를 제대로 만드는 것을 더 중요하게 생각합니다.</p>
+          <p class="body-copy">정해진 틀에 강의를 넣는 방식보다 강사님의 경험과 콘텐츠에 맞춰 <b>강의 방향부터 상품 구성, 판매 전략까지 함께 설계합니다.</b></p>
+          <p class="body-copy">단순한 입점 관계가 아니라 좋은 강사님과 좋은 콘텐츠를 더 오래, 더 크게 키우는 관계를 만들고 싶습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09. vision ============ -->
+  <section class="section section--tight section--band" id="vision">
+    <p class="rail mono">08<b>VISION</b></p>
+    <div class="wrap">
+      <div class="statement__grid">
+        <div class="shead reveal" style="margin-bottom:0">
+          <span class="shead__label">앞으로</span>
+          <h2>돈 버는 법에서 시작해, 더 나은 삶을 배우는 곳으로.</h2>
+        </div>
+        <div class="reveal">
+          <p class="body-copy">지금은 부업과 수익화에서 시작하지만 뿌스쿨이 궁극적으로 만들고 싶은 것은 더 큽니다.</p>
+          <p class="body-copy">일, 돈, AI, 건강, 자기 관리까지 앞으로의 삶을 더 잘 살아가기 위해 필요한 것들을 누구나 어렵지 않게 배울 수 있는 플랫폼. <b>그 시작을 강사님과 함께 만들고 싶습니다.</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. faq ============ -->
+  <section class="section" id="faq">
+    <p class="rail mono">09<b>FAQ</b></p>
+    <div class="wrap">
+      <div class="shead reveal">
+        <span class="shead__label">자주 묻는 질문</span>
+        <h2>FAQ</h2>
+      </div>
+
+      <div class="faq reveal" id="faq-list">
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-p1" id="faq-q1">
+              강의 경험이 없어도 가능한가요?
+              <span class="faq__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-p1" role="region" aria-labelledby="faq-q1">
+            <div class="faq__panel-in">
+              <p>뿌스쿨은 강의 경험보다 직접 실행하고 결과를 만들어본 경험을 중요하게 봅니다.</p>
+              <p>강의를 처음 만드는 분이라도 주제 선정부터 커리큘럼 구성, 제작, 상품화까지 함께 진행할 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-p2" id="faq-q2">
+              촬영이나 편집도 직접 해야 하나요?
+              <span class="faq__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-p2" role="region" aria-labelledby="faq-q2">
+            <div class="faq__panel-in">
+              <p>강사님이 경험과 콘텐츠에 집중할 수 있도록 촬영, 편집 등 제작 과정은 함께 협의하여 진행합니다. 이미 제작해둔 콘텐츠가 있다면 활용할 수 있는 방법도 함께 검토할 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-q3">
+              기존 유튜브나 SNS 콘텐츠도 활용할 수 있나요?
+              <span class="faq__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-p3" role="region" aria-labelledby="faq-q3">
+            <div class="faq__panel-in">
+              <p>가능합니다. 이미 운영하고 계신 채널이나 콘텐츠가 있다면 강사님의 기존 브랜드와 콘텐츠를 최대한 살릴 수 있는 방향으로 함께 기획합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-p4" id="faq-q4">
+              수익 배분은 어떻게 되나요?
+              <span class="faq__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-p4" role="region" aria-labelledby="faq-q4">
+            <div class="faq__panel-in">
+              <p>강의 형태와 제작 범위, 마케팅 방식 등에 따라 달라질 수 있어 구체적인 조건은 미팅 후 협의합니다. 계약 전 정산 방식과 조건을 명확하게 안내드립니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-p5" id="faq-q5">
+              먼저 가볍게 이야기만 나눠봐도 될까요?
+              <span class="faq__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-p5" role="region" aria-labelledby="faq-q5">
+            <div class="faq__panel-in">
+              <p>물론입니다. 처음부터 계약을 전제로 하기보다 강사님의 경험이 어떤 강의가 될 수 있을지, 뿌스쿨과 어떤 방식으로 함께할 수 있을지 편하게 이야기 나누는 것부터 시작합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. cta ============ -->
+  <section class="cta" id="contact">
+    <div class="wrap cta__in">
+      <p class="cta__eq">부 + 부 = 뿌</p>
+      <p class="cta__mark wm"><span class="wm__a">뿌</span><span class="wm__b">스쿨</span></p>
+      <p class="cta__line">부를 배우고, 새로운 부를 만들어가는 곳.</p>
+      <div class="cta__actions">
+        <a class="btn btn--primary btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%95%EC%9D%98%20%ED%98%91%EC%97%85%20%EB%AC%B8%EC%9D%98">강의 협업 문의하기 <span class="btn__ar" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="mailto:sks@ppsc.kr?subject=%5B%EB%BF%8C%EC%8A%A4%EC%BF%A8%5D%20%EA%B0%80%EB%B3%8D%EA%B2%8C%20%EC%9D%B4%EC%95%BC%EA%B8%B0%20%EB%82%98%EB%88%84%EA%B8%B0">가볍게 이야기 나누기</a>
+      </div>
+      <p class="cta__mail">문의 <a href="mailto:sks@ppsc.kr">sks@ppsc.kr</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span>뿌스쿨</span>
+    <span aria-hidden="true">/</span>
+    <span>부 + 부 = 뿌</span>
+    <span class="foot__sp"><a href="mailto:sks@ppsc.kr">sks@ppsc.kr</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* --- reveal on scroll (JS 없으면 항상 보이는 상태 유지) --- */
+  function initReveal() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+
+    document.documentElement.classList.add('js');
+    var items = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    items.forEach(function (el, i) {
+      // 첫 화면에 이미 보이는 요소는 즉시 노출
+      if (el.getBoundingClientRect().top < window.innerHeight * 1.05) {
+        el.classList.add('is-in');
+        return;
+      }
+      el.style.transitionDelay = (i % 3) * 60 + 'ms';
+      io.observe(el);
+    });
+
+    // 안전장치: 스크롤 이벤트가 없는 환경(썸네일 캡처 등)에서도 콘텐츠가 반드시 노출되도록
+    setTimeout(function () {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+    }, 2000);
+  }
+
+  /* --- FAQ accordion --- */
+  function initFaq() {
+    var buttons = document.querySelectorAll('.faq__q');
+
+    function close(btn) {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!panel) return;
+      panel.style.height = panel.scrollHeight + 'px';
+      requestAnimationFrame(function () { panel.style.height = '0px'; });
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function open(btn) {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!panel) return;
+      panel.style.height = panel.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+      panel.addEventListener('transitionend', function once() {
+        if (btn.getAttribute('aria-expanded') === 'true') panel.style.height = 'auto';
+        panel.removeEventListener('transitionend', once);
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        buttons.forEach(function (other) {
+          if (other !== btn && other.getAttribute('aria-expanded') === 'true') close(other);
+        });
+        isOpen ? close(btn) : open(btn);
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      buttons.forEach(function (btn) {
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          var panel = document.getElementById(btn.getAttribute('aria-controls'));
+          if (panel) panel.style.height = 'auto';
+        }
+      });
+    });
+  }
+
+  function start() { initReveal(); initFaq(); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+
+</body>
+</html>
